@@ -1,21 +1,13 @@
 import "./style.css";
 
 export const TotalMoney = ({ listTransactions }) => {
-  const filterEntry = listTransactions.filter((el) => el.type === "Entrada");
-
-  const filterExpenses = listTransactions.filter((el) => el.type === "Despesa");
-
-  const totalEntry = filterEntry.reduce(
-    (lastValue, currValue) => lastValue + currValue.value,
-    0
-  );
-
-  const totalExpenses = filterExpenses.reduce(
-    (lastValue, currValue) => lastValue + currValue.value,
-    0
-  );
-
-  const totalValue = totalEntry - totalExpenses;
+  const totalValue = listTransactions.reduce((lastValue, currValue) => {
+    if (currValue.type === "Entrada") {
+      return lastValue + currValue.value;
+    } else {
+      return lastValue - currValue.value;
+    }
+  }, 0);
 
   return (
     <>

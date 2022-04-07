@@ -29,6 +29,11 @@
   cursor: pointer;
 }
 
+.buttons:hover {
+  background-color: rgba(253, 55, 126, 1);
+  color: white;
+}
+
 .buttonsUl-div {
   display: flex;
   gap: 15px;

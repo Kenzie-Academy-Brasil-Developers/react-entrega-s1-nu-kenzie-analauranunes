@@ -1,6 +1,11 @@
 import "./style.css";
 
-export const Card = ({ listTransactions, handleErase }) => {
+export const Card = ({
+  listTransactions,
+  handleErase,
+  filtersList,
+  filter,
+}) => {
   return (
     <>
       <div className="card-div">
@@ -9,41 +14,85 @@ export const Card = ({ listTransactions, handleErase }) => {
             <h3 className="resume-h3">Resumo financeiro</h3>
           </div>
           <div className="buttonsUl-div">
-            <button className="buttons all-button">Todos</button>
-            <button className="buttons entry-button">Entradas</button>
-            <button className="buttons expenses-button">Despesas</button>
+            <button
+              className="buttons all-button"
+              onClick={() => filtersList("Todos")}
+            >
+              Todos
+            </button>
+            <button
+              className="buttons entry-button"
+              onClick={() => filtersList("Entrada")}
+            >
+              Entradas
+            </button>
+            <button
+              className="buttons expenses-button"
+              onClick={() => filtersList("Despesa")}
+            >
+              Despesas
+            </button>
           </div>
         </div>
-        {listTransactions[0] !== undefined ? (
+        {listTransactions.length !== 0 ? (
           <ul className="card-ul">
-            {listTransactions.map((el, index) => {
-              return (
-                <li
-                  key={index}
-                  className={
-                    el.type === "Entrada"
-                      ? "card-li entry-li"
-                      : "card-li expense-li"
-                  }
-                >
-                  <div className="cardInfo-div">
-                    <div>
-                      <h3 className="card-h3">{el.description}</h3>
-                    </div>
-                    <div className="valueButton-div">
-                      <p className="cardValue-p">R$ {el.value}</p>
-                      <button
-                        onClick={() => handleErase(el)}
-                        className="trash-button"
-                      >
-                        <i className="fa-solid fa-trash"></i>
-                      </button>
-                    </div>
-                  </div>
-                  <p className="typeCard-p">{el.type}</p>
-                </li>
-              );
-            })}
+            {filter.length > 0
+              ? filter.map((el, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className={
+                        el.type === "Entrada"
+                          ? "card-li entry-li"
+                          : "card-li expense-li"
+                      }
+                    >
+                      <div className="cardInfo-div">
+                        <div>
+                          <h3 className="card-h3">{el.description}</h3>
+                        </div>
+                        <div className="valueButton-div">
+                          <p className="cardValue-p">R$ {el.value}</p>
+                          <button
+                            onClick={() => handleErase(el)}
+                            className="trash-button"
+                          >
+                            <i className="fa-solid fa-trash"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <p className="typeCard-p">{el.type}</p>
+                    </li>
+                  );
+                })
+              : listTransactions.map((el, index) => {
+                  return (
+                    <li
+                      key={index}
+                      className={
+                        el.type === "Entrada"
+                          ? "card-li entry-li"
+                          : "card-li expense-li"
+                      }
+                    >
+                      <div className="cardInfo-div">
+                        <div>
+                          <h3 className="card-h3">{el.description}</h3>
+                        </div>
+                        <div className="valueButton-div">
+                          <p className="cardValue-p">R$ {el.value}</p>
+                          <button
+                            onClick={() => handleErase(el)}
+                            className="trash-button"
+                          >
+                            <i className="fa-solid fa-trash"></i>
+                          </button>
+                        </div>
+                      </div>
+                      <p className="typeCard-p">{el.type}</p>
+                    </li>
+                  );
+                })}
           </ul>
         ) : (
           <div className="noTransaction-div">
