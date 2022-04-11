@@ -32,6 +32,7 @@
 .buttons:hover {
   background-color: rgba(253, 55, 126, 1);
   color: white;
+  transition-duration: 1s;
 }
 
 .buttonsUl-div {
@@ -97,6 +98,9 @@
   border-radius: 2.46px;
   color: rgba(134, 142, 150, 1);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .typeCard-p {

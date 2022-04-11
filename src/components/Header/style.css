@@ -37,6 +37,7 @@
 .home-button:hover {
   background-color: rgba(253, 55, 126, 1);
   color: white;
+  transition-duration: 1s;
 }
 
 .divide-div {

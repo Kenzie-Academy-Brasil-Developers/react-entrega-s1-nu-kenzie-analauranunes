@@ -31,6 +31,7 @@ export const Form = ({ listTransactions, setListTransactions }) => {
           name="description"
           placeholder="Digite aqui sua descrição"
           onChange={(event) => setDescription(event.target.value)}
+          required
         />
         <p className="example-p">Ex.: Compra de roupas</p>
         <div className="values-div">
@@ -44,6 +45,7 @@ export const Form = ({ listTransactions, setListTransactions }) => {
               name="value"
               placeholder="1 R$"
               onChange={(event) => setValue(event.target.value)}
+              required
             />
           </div>
           <div className="typesValue-div">
@@ -54,6 +56,7 @@ export const Form = ({ listTransactions, setListTransactions }) => {
               className="type-select"
               name="type"
               onChange={(event) => setType(event.target.value)}
+              required
             >
               <option value="Entrada">Entrada</option>
               <option value="Despesa">Saída</option>
